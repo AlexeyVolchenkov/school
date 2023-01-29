@@ -32,6 +32,10 @@ int main() {
         score2 = check_goal_player2(ball_x, score2);
         ball_y = move_ball_y(ball_x, ball_y, direct_y);
         ball_x = move_ball_x(ball_x, ball_y, direct_x);
+        if (ball_x >= 80 || ball_x <= 0) {
+            ball_x = 40;
+            ball_y = 12;
+        }
         cross_and_toe_display(ball_x, ball_y, player1_y, player2_y, player1_x, player2_x, score1, score2);
         scanf("%c", &move_racket);
         if (move_racket == 'a') {
@@ -82,21 +86,11 @@ void cross_and_toe_display(int ball_x, int ball_y, int player1_y, int player2_y,
 
 int move_ball_x(int ball_x, int ball_y, int direct_x){
     ball_x = ball_x + direct_x;
-    if(ball_x >= 79){
-        ball_x = 40;
-    } else if (ball_x <= 0) {
-        ball_x = 40;
-    }
     return ball_x;
 }
 
 int move_ball_y(int ball_x, int ball_y, int direct_y){
     ball_y = ball_y + direct_y;
-    if(ball_x >= 79){
-        ball_y = 12;
-    } else if (ball_x <= 0) {
-        ball_y = 12;
-    }
     return ball_y;
 }
 
@@ -136,28 +130,28 @@ int ball_change_direct_y(int ball_y, int direct_y){
 }
 
 int racket_player1_move_up(int player1_y){
-    if(player1_y >= 3){
+    if(player1_y >= 4){
         player1_y = player1_y - 1;
     }
     return player1_y;
 }
 
 int racket_player1_move_down(int player1_y){
-    if(player1_y <= 21){
+    if(player1_y <= 22){
         player1_y = player1_y + 1;
     }
     return player1_y;
 }
 
 int racket_player2_move_up(int player2_y){
-    if(player2_y >= 3){
+    if(player2_y >= 4){
         player2_y = player2_y - 1;
     }
     return player2_y;
 }
 
 int racket_player2_move_down(int player2_y){
-    if(player2_y <= 21){
+    if(player2_y <= 22){
         player2_y = player2_y + 1;
     }
     return player2_y;
